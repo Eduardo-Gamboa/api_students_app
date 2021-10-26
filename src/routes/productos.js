@@ -4,9 +4,12 @@ const db = require('../../config/db');
 const productosController = require('../controller/productoController');
 
 // CONSULTAR TODOS LOS PRODUCTOS
-router.get('/students/getAll', productosController.getAll);
+router.get('/', (req, res) => {
+    res.send("Bienvenido al api perra");
+});
+router.get('/students', productosController.getAll);
 // CONSULTAR UN PRODUCTO POR ID
-router.get('/students/getByID/:id', productosController.getByID);
+router.get('/students/:id', productosController.getByID);
 // AÑADIR PRODUCTO
 router.post('/students/add', productosController.insert);
 // ACTUALIZAR UN PRODUCTO:
