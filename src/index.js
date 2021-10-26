@@ -6,6 +6,11 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 // app.set('port', process.env.PORT || 3000);
 
+//CORS
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
+
 // MIddlewares
 app.use(express.json());
 app.use(bodyParser.json());

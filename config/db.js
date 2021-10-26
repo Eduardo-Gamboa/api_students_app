@@ -6,11 +6,12 @@ const mysqlConnection = mysql.createConnection({
     user: 'bc2378c6b1596d',
     password: '3d449b02',
     database: 'heroku_0143efdc9011200',
+
     // host: 'localhost',
     // user: 'root',
     // password: '',
     // database: 'school',
-    multipleStatements: true
+    // multipleStatements: true
 });
 
 mysqlConnection.connect(function(err) {
