@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 3000;
 // app.set('port', process.env.PORT || 3000);
 
 //CORS
-// const cors = require('cors');
-// app.use(cors());
-// app.options('*', cors());
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
 
 // MIddlewares
 app.use(express.json());
