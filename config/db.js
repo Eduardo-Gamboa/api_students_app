@@ -22,5 +22,7 @@ mysqlConnection.connect(function(err) {
         console.log('Db is connected succesfully');
     }
 });
-
+setInterval(function() {
+    db.query('SELECT 1');
+}, 5000);
 module.exports = mysqlConnection;
