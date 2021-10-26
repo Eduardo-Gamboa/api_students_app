@@ -1,62 +1,62 @@
 const mysql = require('mysql');
 
-// //bc2378c6b1596d:3d449b02@us-cdbr-east-04.cleardb.com/heroku_0143efdc9011200
-// const mysqlConnection = mysql.createConnection({
-//     host: 'us-cdbr-east-04.cleardb.com',
-//     user: 'bc2378c6b1596d',
-//     password: '3d449b02',
-//     database: 'heroku_0143efdc9011200',
-
-//     // host: 'localhost',
-//     // user: 'root',
-//     // password: '',
-//     // database: 'school',
-//     multipleStatements: true
-// });
-
-// mysqlConnection.connect(function(err) {
-//     if (err) {
-//         console.error(err);
-//         return;
-//     } else {
-//         console.log('Db is connected succesfully');
-//     }
-// });
-
-// module.exports = mysqlConnection;
-
-
-var db_config = {
+//bc2378c6b1596d:3d449b02@us-cdbr-east-04.cleardb.com/heroku_0143efdc9011200
+const mysqlConnection = mysql.createPool({
     host: 'us-cdbr-east-04.cleardb.com',
     user: 'bc2378c6b1596d',
     password: '3d449b02',
     database: 'heroku_0143efdc9011200',
-};
 
-var connection;
+    // host: 'localhost',
+    // user: 'root',
+    // password: '',
+    // database: 'school',
+    multipleStatements: true
+});
 
-function handleDisconnect() {
-    connection = mysql.createConnection(db_config); // Recreate the connection, since
-    // the old one cannot be reused.
+mysqlConnection.getConnection(function(err) {
+    if (err) {
+        console.error(err);
+        return;
+    } else {
+        console.log('Db is connected succesfully');
+    }
+});
 
-    connection.connect(function(err) { // The server is either down
-        if (err) { // or restarting (takes a while sometimes).
-            console.log('error when connecting to db:', err);
-            setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-        } else {
-            console.log("Conexión establecida con exito!!!");
-        } // to avoid a hot loop, and to allow our node script to
-    }); // process asynchronous requests in the meantime.
-    // If you're also serving http, display a 503 error.
-    connection.on('error', function(err) {
-        console.log('db error', err);
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-            handleDisconnect(); // lost due to either server restart, or a
-        } else { // connnection idle timeout (the wait_timeout
-            throw err; // server variable configures this)
-        }
-    });
-}
+module.exports = mysqlConnection;
 
-handleDisconnect();
-module.exports = connection;
+
+// var db_config = {
+//     host: 'us-cdbr-east-04.cleardb.com',
+//     user: 'bc2378c6b1596d',
+//     password: '3d449b02',
+//     database: 'heroku_0143efdc9011200',
+// };
+
+// var connection;
+
+// function handleDisconnect() {
+//     connection = mysql.createConnection(db_config); // Recreate the connection, since
+//     // the old one cannot be reused.
+
+//     connection.connect(function(err) { // The server is either down
+//         if (err) { // or restarting (takes a while sometimes).
+//             console.log('error when connecting to db:', err);
+//             setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+//         } else {
+//             console.log("Conexión establecida con exito!!!");
+//         } // to avoid a hot loop, and to allow our node script to
+//     }); // process asynchronous requests in the meantime.
+//     // If you're also serving http, display a 503 error.
+//     connection.on('error', function(err) {
+//         console.log('db error', err);
+//         if (err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+//             handleDisconnect(); // lost due to either server restart, or a
+//         } else { // connnection idle timeout (the wait_timeout
+//             throw err; // server variable configures this)
+//         }
+//     });
+// }
+
+// handleDisconnect();
+// module.exports = connection;
