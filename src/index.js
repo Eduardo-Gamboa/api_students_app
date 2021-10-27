@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000;
 //CORS
 const cors = require('cors');
 app.use(cors());
-
 app.options('*', cors());
 
 // MIddlewares
