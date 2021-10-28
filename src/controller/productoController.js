@@ -18,7 +18,7 @@ module.exports = {
         });
     },
     insert: function(req, res) {
-        const { id, name, grade, group_, email, direccion, lat, long } = req.body;
+        const { id, name, grade, group_, email, direccion, lat, long_ } = req.body;
         productoModel.insert(con, req.body, function(err) {
             if (!err) {
                 res.json({ status: 'ESTUDIANTE AGREGADO CORRECTAMENTE' });
@@ -28,7 +28,7 @@ module.exports = {
         });
     },
     update: function(req, res) {
-        const { name, grade, group_, email, direccion, lat, long } = req.body;
+        const { name, grade, group_, email, direccion, lat, long_ } = req.body;
         productoModel.update(con, req.body, req.params.id, function(err) {
             console.log(req.params.id);
             if (!err) {

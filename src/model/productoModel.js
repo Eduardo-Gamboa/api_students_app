@@ -9,7 +9,7 @@ module.exports = {
         con.query("insert into students(name, grade, group_, email, direccion, lat, long_) values (?, ?, ?, ?, ?, ?, ?)", [datos.name, datos.grade, datos.group_, datos.email, datos.direccion, datos.lat, datos.long, ], funcion);
     },
     update: function(con, datos, id, funcion) {
-        con.query("update students SET name = ?, grade = ?, group_ = ?, email = ?, direccion = ?, lat = ?, long_ = ? where id = ?", [datos.name, datos.grade, datos.group_, datos.email, datos.direccion, datos.lat, datos.long, id], funcion);
+        con.query("update students SET name = ?, grade = ?, group_ = ?, email = ?, direccion = ?, lat = ?, long_ = ? where id = ?", [datos.name, datos.grade, datos.group_, datos.email, datos.direccion, datos.lat, datos.long_, id], funcion);
     },
     delete: function(con, id, funcion) {
         con.query("DELETE FROM students WHERE id = ?", [id], funcion);
