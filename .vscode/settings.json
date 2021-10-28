@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/d4c65b90-eb01-4706-9ac5-23c09bc6a8a0/resourceGroups/api_node_students/providers/Microsoft.Web/sites/api-students-2",
+    "appService.deploySubpath": "."
+}
